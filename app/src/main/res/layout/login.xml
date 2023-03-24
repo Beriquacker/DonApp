@@ -35,13 +35,22 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/iniciarsesion"
         android:layout_width="269dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
-        android:text="Enviar"
+        android:text="Iniciar Sesion"
         android:textSize="15sp"/>
+
+    <Button
+        android:id="@+id/registro"
+        android:layout_width="269dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="Registrarse"
+        android:textSize="15sp" />
 
 
 </LinearLayout>

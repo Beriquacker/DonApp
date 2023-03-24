@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/idemail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -14,15 +15,15 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
 
+        android:fontFamily="serif"
         android:text="Registro"
-        android:textSize="25sp"
-        android:fontFamily="serif"/>
+        android:textSize="25sp" />
 
     <View
         android:id="@+id/divider2"
         android:layout_width="350dp"
-        android:layout_marginLeft="20dp"
         android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:background="?android:attr/listDivider" />
 
@@ -30,66 +31,66 @@
         android:id="@+id/editTextTextPersonName"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Nombre"
-        android:layout_marginTop="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editTextTextPassword2"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Contraseña"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/editTextTextPassword3"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Repetir contraseña"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:hint="Repetir contraseña"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress2"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="Email"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/editTextNumber"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="Código Postal"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:hint="Código Postal"
+        android:inputType="number" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enviar"
-        android:textSize="15sp"
-        android:layout_marginTop="150dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginTop="150dp"
+        android:layout_marginRight="50dp"
+        android:text="Enviar"
+        android:textSize="15sp" />
 
 
 </LinearLayout>
