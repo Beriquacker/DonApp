@@ -44,7 +44,7 @@
         android:textSize="15sp"/>
 
     <Button
-        android:id="@+id/registro"
+        android:id="@+id/registroboton"
         android:layout_width="269dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

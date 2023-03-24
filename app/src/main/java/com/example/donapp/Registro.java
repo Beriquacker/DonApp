@@ -21,6 +21,8 @@ public class Registro extends AppCompatActivity {
     private EditText editTextRepContraseña;
     private EditText editTextCodPostal;
 
+    private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,11 @@ public class Registro extends AppCompatActivity {
                 String Email = editTextEmail.getText().toString();
                 String CodPostal = editTextCodPostal.getText().toString();
 
+                Log.d(TAG,nombre);
+                Log.d(TAG,Contra);
+                Log.d(TAG,ContraRep);
+                Log.d(TAG,Email);
+                Log.d(TAG,CodPostal);
             }
         });
     }
