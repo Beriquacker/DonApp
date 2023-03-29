@@ -99,7 +99,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="50dp"
-        android:text="Enviar"
+        android:text="Volver"
         android:textSize="15sp" />
 
 
