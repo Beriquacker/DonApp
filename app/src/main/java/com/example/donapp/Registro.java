@@ -44,14 +44,32 @@ public class Registro extends AppCompatActivity {
                 String Email = editTextEmail.getText().toString();
                 String CodPostal = editTextCodPostal.getText().toString();
 
-                Log.d(TAG,nombre);
-                Log.d(TAG,Contra);
-                Log.d(TAG,ContraRep);
-                Log.d(TAG,Email);
-                Log.d(TAG,CodPostal);
+                if (Contra.equals(ContraRep)) {
+                    Log.d(TAG, "nombre: " + nombre);
+                    Log.d(TAG, "contra: " + Contra);
+                    Log.d(TAG, "Contra Repe: " + ContraRep);
+                    Log.d(TAG, "email: " + Email);
+                    Log.d(TAG, "codPostal: " + CodPostal);
+                } else
+                    Log.d(TAG, "Las contraseñas no coinciden");
+            }
+        });
+
+        Button BotonVolver = findViewById(R.id.buttonvolver);
+
+        BotonVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInicio();
             }
         });
     }
-
+    private void toInicio(){
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
 
 }
+
+
+

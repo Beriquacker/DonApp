@@ -113,5 +113,6 @@ public class Perfil extends AppCompatActivity {
         Intent intent = new Intent(this, Ajustes.class);
         startActivity(intent);
     }
+    // MANEJAR DATOS DEL USUARIO
 
 }
