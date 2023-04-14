@@ -12,7 +12,8 @@ public class DBCode extends SQLiteOpenHelper {
     private static final String  DATABASE_NOMBRE = "DonAPP.db";
     public static final String  TABLE_USUARIOS = "t_usuarios";
     public static final String  TABLE_TIENDA = "t_tienda";
-
+    public static final String  TABLE_DONACION = "t_donacion";
+    public static final String  TABLE_ONG = "t_ong";
 
     public DBCode(@Nullable Context context) {
         super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
@@ -35,6 +36,19 @@ public class DBCode extends SQLiteOpenHelper {
                 "descripcion TEXT NOT NULL," +
                 "estado TEXT NOT NULL," +
                 "usuario TEXT NOT NULL)");
+
+        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_DONACION + "(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "NumArt TEXT NOT NULL," +
+                "idUsuario TEXT NOT NULL," +
+                "NumDonacion TEXT NOT NULL," +
+                " TEXT NOT NULL)");
+
+        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_ONG + "(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "CIF TEXT NOT NULL," +
+                "contraseña TEXT NOT NULL," +
+                "nombre_e TEXT NOT NULL)");
     }
 
     @Override
