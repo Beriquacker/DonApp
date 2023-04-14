@@ -12,9 +12,6 @@
         android:id="@+id/idperfil"
         android:title="Perfil" />
     <item
-        android:id="@+id/idmensajes"
-        android:title="Mensajes" />
-    <item
         android:id="@+id/idajustes"
         android:title="Ajustes" />
     <item

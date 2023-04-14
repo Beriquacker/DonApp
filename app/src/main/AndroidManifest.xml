@@ -38,11 +38,6 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
-            android:name=".Mensajes"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-        <activity
             android:name=".Ajustes"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

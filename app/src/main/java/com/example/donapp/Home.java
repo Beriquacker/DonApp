@@ -43,10 +43,6 @@ public class Home extends AppCompatActivity {
                 OpenPerfil();
                 Toast.makeText(this, "Perfil seleccionado", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.idmensajes:
-                OpenMensajes();
-                Toast.makeText(this, "Mensajes seleccionado", Toast.LENGTH_SHORT).show();
-                return true;
             case R.id.idajustes:
                 OpenAjustes();
                 Toast.makeText(this, "Ajustes seleccionado", Toast.LENGTH_SHORT).show();
@@ -73,11 +69,7 @@ public class Home extends AppCompatActivity {
         Intent intent = new Intent(this, Perfil.class);
         startActivity(intent);
     }
-    private void OpenMensajes()
-    {
-        Intent intent = new Intent(this, Mensajes.class);
-        startActivity(intent);
-    }
+
     private void OpenAjustes()
     {
         Intent intent = new Intent(this, Ajustes.class);
