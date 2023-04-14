@@ -94,7 +94,7 @@ public class DBCode extends SQLiteOpenHelper {
         Cursor cursor = db.query(
                 TABLE_USUARIOS, // Nombre de la tabla
                 new String[]{"id"}, // Columnas que queremos obtener
-                "email = ? AND password = ?", // Condición (WHERE)
+                "email = ? AND contra = ?", // Condición (WHERE)
                 new String[]{email, password}, // Valores para reemplazar '?' en la condición
                 null, // GROUP BY
                 null, // HAVING
@@ -105,5 +105,24 @@ public class DBCode extends SQLiteOpenHelper {
         cursor.close();
         return count > 0;
     }
+    /*
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // Nota: Asegúrate de incrementar DATABASE_VERSION cuando realices cambios en el esquema de la base de datos
+
+        // Actualizar las tablas existentes en lugar de eliminarlas y recrearlas
+        if (oldVersion < 2) {
+            // Supongamos que necesitas agregar una columna "phone" en la versión 2 de la base de datos
+            db.execSQL("ALTER TABLE " + TABLE_USUARIOS + " ADD COLUMN phone TEXT");
+        }
+
+        if (oldVersion < 3) {
+            // Supongamos que necesitas agregar otra columna "address" en la versión 3 de la base de datos
+            db.execSQL("ALTER TABLE " + TABLE_USUARIOS + " ADD COLUMN address TEXT");
+        }
+
+        // Continuar con otros cambios en la base de datos según sea necesario
+    }
+        */
 
 }

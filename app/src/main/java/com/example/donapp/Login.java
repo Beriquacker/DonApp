@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.util.Log;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
+
 import com.example.donapp.BD.DBCode;
 
 
@@ -40,17 +42,17 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 String email = editTextCorreo.getText().toString();
                 String Contra = editTextContra.getText().toString();
-                openHome();
-                /*
+
                 if (dbCode.ExisteUsuario(email) != 0){
                     if(dbCode.ConfirmarCredenciales(email,Contra) == true)
                         openHome();
                     else
-                        ;//crear alerta de que la contraseña o el email no coinciden
+                        Toast.makeText(getApplicationContext(), "La contraseña o el email no coinciden", Toast.LENGTH_SHORT).show();
                 }
                 else
-                    ; //Alerta de que el usuario no existe, que se registre
-                 */
+                    Toast.makeText(getApplicationContext(), "El usuario no existe debe registrarse", Toast.LENGTH_SHORT).show();
+
+
 
             }
         });

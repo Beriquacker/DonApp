@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.util.Log;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
+
 import com.example.donapp.BD.DBCode;
 
 
@@ -41,8 +43,8 @@ public class Registro extends AppCompatActivity {
         editTextRepContraseña = findViewById(R.id.editTextTextPassword3);
         editTextCodPostal = findViewById(R.id.editTextNumber);
 
-        Button buttonMostrarNombre = findViewById(R.id.button2);
-        buttonMostrarNombre.setOnClickListener(new View.OnClickListener() {
+        Button BotonEnviar = findViewById(R.id.button2);
+        BotonEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String nombre = editTextNombre.getText().toString();
@@ -51,21 +53,22 @@ public class Registro extends AppCompatActivity {
                 String Email = editTextEmail.getText().toString();
                 String CodPostal = editTextCodPostal.getText().toString();
 
-                /*
-
                 if(dbCode.ExisteUsuario(Email)== 0 )
                 {
                     if (Contra.equals(ContraRep)){
                         dbCode.addUser(nombre, Contra, Email, CodPostal);
+                        Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
+                        toInicio();
                     }
-                    else;
-                        //alerta de que las contraseñas no coinciden
+                    else
+                        Toast.makeText(getApplicationContext(), "Las constraseñas no coinciden", Toast.LENGTH_SHORT).show();
+
                 }
-                else;
-                    //alerta de que el usuario ya esta registrado
+                else
+                    Toast.makeText(getApplicationContext(), "El usuario ya existe", Toast.LENGTH_SHORT).show();
 
 
-                 */
+
             }
         });
 
@@ -82,6 +85,7 @@ public class Registro extends AppCompatActivity {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
+
 
 
 
