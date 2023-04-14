@@ -1,9 +1,9 @@
 package com.example.donapp.BD;
-
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+import android.database.Cursor;
 import androidx.annotation.Nullable;
 
 public class DBCode extends SQLiteOpenHelper {
@@ -24,11 +24,10 @@ public class DBCode extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_USUARIOS + "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "username TEXT NOT NULL," +
                 "name TEXT NOT NULL," +
-                "ubication TEXT NOT NULL," +
-                "password TEXT NOT NULL," +
-                "email TEXT)");
+                "contra TEXT NOT NULL," +
+                "CodPostal TEXT NOT NULL," +
+                "email TEXT NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_TIENDA + "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -57,5 +56,36 @@ public class DBCode extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_USUARIOS);
         onCreate(sqLiteDatabase);
 
+    }
+
+    // AÑADIR USUARIO
+    public void addUser(String name, String email, String password, String CodPostal) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("CodPostal", CodPostal);
+        values.put("contra", password);
+        values.put("email", email);
+
+        db.insert(TABLE_USUARIOS, null, values);
+        db.close();
+    }
+
+    public int ExisteUsuario(String email) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(
+                TABLE_USUARIOS, // Nombre de la tabla
+                new String[]{"id"}, // Columnas que queremos obtener
+                "email = ?", // Condición (WHERE)
+                new String[]{email}, // Valores para reemplazar '?' en la condición
+                null, // GROUP BY
+                null, // HAVING
+                null // ORDER BY
+        );
+
+        int count = cursor.getCount(); // Obtener el número de filas devueltas
+        cursor.close();
+        return count;
     }
 }

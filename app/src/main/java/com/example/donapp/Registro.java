@@ -12,6 +12,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 import android.util.Log;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import com.example.donapp.BD.DBCode;
+
+
 
 
 public class Registro extends AppCompatActivity {
@@ -27,6 +32,8 @@ public class Registro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro);
+        // Instancia de la BBDD
+        DBCode dbCode = new DBCode(this);
 
         editTextNombre = findViewById(R.id.editTextTextPersonName);
         editTextEmail = findViewById(R.id.editTextTextEmailAddress2);
@@ -43,15 +50,16 @@ public class Registro extends AppCompatActivity {
                 String ContraRep = editTextRepContraseña.getText().toString();
                 String Email = editTextEmail.getText().toString();
                 String CodPostal = editTextCodPostal.getText().toString();
-
-                if (Contra.equals(ContraRep)) {
-                    Log.d(TAG, "nombre: " + nombre);
-                    Log.d(TAG, "contra: " + Contra);
-                    Log.d(TAG, "Contra Repe: " + ContraRep);
-                    Log.d(TAG, "email: " + Email);
-                    Log.d(TAG, "codPostal: " + CodPostal);
-                } else
-                    Log.d(TAG, "Las contraseñas no coinciden");
+                if(dbCode.ExisteUsuario(Email)== 0 )
+                {
+                    if (Contra.equals(ContraRep)){
+                        dbCode.addUser(nombre, Contra, Email, CodPostal);
+                    }
+                    else;
+                        //alerta de que las contraseñas no coinciden
+                }
+                else;
+                    //alerta de que el usuario ya esta registrado
             }
         });
 
@@ -68,6 +76,9 @@ public class Registro extends AppCompatActivity {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
+
+
+
 
 }
 
