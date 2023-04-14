@@ -88,4 +88,22 @@ public class DBCode extends SQLiteOpenHelper {
         cursor.close();
         return count;
     }
+
+    public boolean ConfirmarCredenciales(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(
+                TABLE_USUARIOS, // Nombre de la tabla
+                new String[]{"id"}, // Columnas que queremos obtener
+                "email = ? AND password = ?", // Condición (WHERE)
+                new String[]{email, password}, // Valores para reemplazar '?' en la condición
+                null, // GROUP BY
+                null, // HAVING
+                null // ORDER BY
+        );
+
+        int count = cursor.getCount(); // Obtener el número de filas devueltas
+        cursor.close();
+        return count > 0;
+    }
+
 }

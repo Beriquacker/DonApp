@@ -1,12 +1,20 @@
 package com.example.donapp;
 import android.content.Intent;
-import android.content.OperationApplicationException;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.widget.ImageButton;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
+import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Button;
+import android.util.Log;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import com.example.donapp.BD.DBCode;
 
 
 public class Login extends AppCompatActivity {
@@ -14,6 +22,8 @@ public class Login extends AppCompatActivity {
     private EditText editTextContra;
 
     private static final String TAG = "MainActivity";
+
+    DBCode dbCode = new DBCode(this);
 
     // PARA INICIAR SESION
     @Override
@@ -30,12 +40,18 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 String email = editTextCorreo.getText().toString();
                 String Contra = editTextContra.getText().toString();
-                Log.d(TAG,email);
-                Log.d(TAG,Contra);
-
-                if (email.equals("admin") && Contra.equals("root")) {
-                    openHome();
+                openHome();
+                /*
+                if (dbCode.ExisteUsuario(email) != 0){
+                    if(dbCode.ConfirmarCredenciales(email,Contra) == true)
+                        openHome();
+                    else
+                        ;//crear alerta de que la contraseña o el email no coinciden
                 }
+                else
+                    ; //Alerta de que el usuario no existe, que se registre
+                 */
+
             }
         });
 

@@ -50,6 +50,9 @@ public class Registro extends AppCompatActivity {
                 String ContraRep = editTextRepContraseña.getText().toString();
                 String Email = editTextEmail.getText().toString();
                 String CodPostal = editTextCodPostal.getText().toString();
+
+                /*
+
                 if(dbCode.ExisteUsuario(Email)== 0 )
                 {
                     if (Contra.equals(ContraRep)){
@@ -60,6 +63,9 @@ public class Registro extends AppCompatActivity {
                 }
                 else;
                     //alerta de que el usuario ya esta registrado
+
+
+                 */
             }
         });
 
