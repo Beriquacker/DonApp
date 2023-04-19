@@ -26,10 +26,10 @@ public class Tienda extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ActividadMenu);
+        setContentView(R.layout.tienda);
 
         // Configurar RecyclerView
-        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.RecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Obtener los datos de la base de datos
@@ -44,7 +44,7 @@ public class Tienda extends AppCompatActivity {
         List<articulo> articles = new ArrayList<>();
 
         // Abrir la base de datos
-        SQLiteDatabase db = openOrCreateDatabase("mydatabase", MODE_PRIVATE, null);
+        SQLiteDatabase db = openOrCreateDatabase("database", MODE_PRIVATE, null);
 
         // Ejecutar la consulta para obtener los artículos
         Cursor cursor = db.rawQuery("SELECT * FROM articles", null);
