@@ -21,7 +21,7 @@ import java.util.List;
 public class Tienda extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArticleAdapter articleAdapter;
-    private List<Article> articles;
+    private List<Articulo> articles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +40,8 @@ public class Tienda extends AppCompatActivity {
         recyclerView.setAdapter(articleAdapter);
     }
 
-    private List<Article> getArticlesFromDatabase() {
-        List<Article> articles = new ArrayList<>();
+    private List<Articulo> getArticlesFromDatabase() {
+        List<Articulo> articles = new ArrayList<>();
 
         // Abrir la base de datos
         SQLiteDatabase db = openOrCreateDatabase("mydatabase", MODE_PRIVATE, null);
@@ -55,7 +55,7 @@ public class Tienda extends AppCompatActivity {
             String name = cursor.getString(cursor.getColumnIndex("name"));
             String articleClass = cursor.getString(cursor.getColumnIndex("class"));
             String description = cursor.getString(cursor.getColumnIndex("description"));
-            Article article = new Article(image, name, articleClass, description);
+            Articulo article = new Articulo(image, name, articleClass, description);
             articles.add(article);
         }
 
@@ -67,9 +67,9 @@ public class Tienda extends AppCompatActivity {
     }
 
     private class ArticleAdapter extends RecyclerView.Adapter<ArticleViewHolder> {
-        private List<Article> articles;
+        private List<Articulo> articles;
 
-        public ArticleAdapter(List<Article> articles) {
+        public ArticleAdapter(List<Articulo> articles) {
             this.articles = articles;
         }
 
@@ -83,7 +83,7 @@ public class Tienda extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ArticleViewHolder holder, int position) {
-            Article article = articles.get(position);
+            Articulo article = articles.get(position);
             holder.bind(article);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -116,7 +116,7 @@ public class Tienda extends AppCompatActivity {
             descriptionView = itemView.findViewById(R.id.description);
         }
 
-        public void bind(Article article) {
+        public void bind(Articulo article) {
             imageView.setImageResource(article.getImage());
             nameView.setText(article.getName());
             classView.setText(article.getClass());
