@@ -1,17 +1,18 @@
 package com.example.donapp;
 
-public class articulo {
+public class Articulo {
     private int image;
     private String name;
-    private String category;
+    private String state;
     private String description;
 
-    public articulo(int image, String name, String category, String description) {
-        this.image = image;
+    public Articulo(String name, String description, String state) {
+        // Asigna las variables de instancia usando los argumentos proporcionados
         this.name = name;
-        this.category = category;
         this.description = description;
+        this.state = state;
     }
+
 
     public int getImage() {
         return image;
@@ -21,8 +22,8 @@ public class articulo {
         return name;
     }
 
-    public String getCategory() {
-        return category;
+    public String getState() {
+        return state;
     }
 
     public String getDescription() {
