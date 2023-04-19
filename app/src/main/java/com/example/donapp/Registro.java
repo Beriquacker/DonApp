@@ -56,7 +56,7 @@ public class Registro extends AppCompatActivity {
                 if(dbCode.ExisteUsuario(Email)== 0 )
                 {
                     if (Contra.equals(ContraRep)){
-                        dbCode.addUser(nombre, Contra, Email, CodPostal);
+                        dbCode.addUser(nombre, Email, Contra, CodPostal);
                         Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
                         toInicio();
                     }

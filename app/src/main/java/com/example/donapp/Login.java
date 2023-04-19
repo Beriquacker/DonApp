@@ -71,11 +71,15 @@ public class Login extends AppCompatActivity {
 
     private void openRegistro() {
         Intent intent = new Intent(this, Registro.class);
+
         startActivity(intent);
     }
 
     private void openHome() {
         Intent intent = new Intent(this, Home.class);
+        Bundle b = new Bundle();
+        b.putString("email", editTextCorreo.getText().toString());
+        intent.putExtras(b); //Put your id to your next Intent
         startActivity(intent);
     }
 

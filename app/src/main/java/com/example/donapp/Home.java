@@ -15,12 +15,15 @@ import android.view.MenuItem;
 import android.widget.Toast;
 public class Home extends AppCompatActivity {
 
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+        Bundle b = getIntent().getExtras();
+        email=b.getString("email");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,6 +70,9 @@ public class Home extends AppCompatActivity {
     private void OpenPerfil()
     {
         Intent intent = new Intent(this, Perfil.class);
+        Bundle b = new Bundle();
+        b.putString("email", email);
+        intent.putExtras(b); //Put your id to your next Intent
         startActivity(intent);
     }
 

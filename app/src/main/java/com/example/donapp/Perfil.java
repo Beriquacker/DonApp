@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,13 +20,32 @@ import java.io.IOException;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.donapp.BD.DBCode;
+import com.example.donapp.Clases.Usuario;
+
 public class Perfil extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageButton imageButton;
+
+    DBCode dbCode = new DBCode(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil);
+
+        Bundle b = getIntent().getExtras();
+        String email=b.getString("email");
+
+        Usuario usuario = dbCode.LeerUsuario(email);
+
+        EditText editTextName = findViewById(R.id.name);
+        editTextName.setText(usuario.getName());
+
+        EditText editTextEmail = findViewById(R.id.email);
+        editTextEmail.setText(usuario.getEmail());
+
+        EditText editTextCodPostal = findViewById(R.id.codpostal);
+        editTextCodPostal.setText(usuario.getCodPostal());
 
         Toolbar toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
