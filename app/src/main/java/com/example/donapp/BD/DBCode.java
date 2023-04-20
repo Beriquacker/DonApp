@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.Cursor;
 import androidx.annotation.Nullable;
 
+import com.example.donapp.Clases.Usuario;
+
 public class DBCode extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
@@ -36,12 +38,12 @@ public class DBCode extends SQLiteOpenHelper {
                 "estado TEXT NOT NULL," +
                 "usuario TEXT NOT NULL)");
 
-        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_DONACION + "(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "NumArt TEXT NOT NULL," +
-                "idUsuario TEXT NOT NULL," +
-                "NumDonacion TEXT NOT NULL," +
-                " TEXT NOT NULL)");
+        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_DONACION + "("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "NumArt TEXT NOT NULL,"
+                + "idUsuario TEXT NOT NULL,"
+                + "NumDonacion TEXT NOT NULL,"
+                + "nombreColumna TEXT NOT NULL)"); // Reemplaza 'nombreColumna' con el nombre adecuado para la columna
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_ONG + "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -84,6 +86,34 @@ public class DBCode extends SQLiteOpenHelper {
         int count = cursor.getCount(); // Obtener el número de filas devueltas
         cursor.close();
         return count;
+    }
+
+    public Usuario LeerUsuario(String email) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(
+                TABLE_USUARIOS, // Nombre de la tabla
+                new String[]{"id","name","CodPostal","email"}, // Columnas que queremos obtener
+                "email = ?", // Condición (WHERE)
+                new String[]{email}, // Valores para reemplazar '?' en la condición
+                null, // GROUP BY
+                null, // HAVING
+                null // ORDER BY
+        );
+
+        Usuario usuario = new Usuario();
+        if (cursor != null)
+        {
+            cursor.moveToNext();
+            usuario = new Usuario();
+            usuario.setId(cursor.getInt(cursor.getColumnIndex("id")));
+            usuario.setEmail(email);
+            usuario.setCodPostal(cursor.getString(cursor.getColumnIndex("CodPostal")));
+            usuario.setName(cursor.getString(cursor.getColumnIndex("name")));
+        }
+
+        cursor.close();
+        return usuario;
     }
 
     public boolean ConfirmarCredenciales(String email, String password) {
