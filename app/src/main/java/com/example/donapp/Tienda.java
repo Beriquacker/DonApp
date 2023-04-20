@@ -55,7 +55,7 @@ public class Tienda extends AppCompatActivity {
 
         // Recorrer el cursor y agregar cada artículo a la lista
         // Recorrer el cursor y agregar cada artículo a la lista
-        
+
         while (cursor.moveToNext()) {
             int nameIndex = cursor.getColumnIndex("articulo");
             int descriptionIndex = cursor.getColumnIndex("descripcion");
