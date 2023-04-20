@@ -21,7 +21,7 @@ import java.util.List;
 public class Tienda extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArticleAdapter articleAdapter;
-    private List<Article> articles;
+    private List<Articulo> articles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

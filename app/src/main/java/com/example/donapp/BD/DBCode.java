@@ -38,12 +38,12 @@ public class DBCode extends SQLiteOpenHelper {
                 "estado TEXT NOT NULL," +
                 "usuario TEXT NOT NULL)");
 
-        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_DONACION + "(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "NumArt TEXT NOT NULL," +
-                "idUsuario TEXT NOT NULL," +
-                "NumDonacion TEXT NOT NULL," +
-                " TEXT NOT NULL)");
+        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_DONACION + "("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "NumArt TEXT NOT NULL,"
+                + "idUsuario TEXT NOT NULL,"
+                + "NumDonacion TEXT NOT NULL,"
+                + "nombreColumna TEXT NOT NULL)"); // Reemplaza 'nombreColumna' con el nombre adecuado para la columna
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_ONG + "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +

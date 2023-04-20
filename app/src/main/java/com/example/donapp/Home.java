@@ -7,12 +7,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
 public class Home extends AppCompatActivity {
 
     private String email;
@@ -27,6 +21,7 @@ public class Home extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        startActivity(new Intent(this, Tienda.class));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
