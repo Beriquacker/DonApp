@@ -1,4 +1,5 @@
 package com.example.donapp.BD;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,7 +20,6 @@ public class DBCode extends SQLiteOpenHelper {
 
     public DBCode(@Nullable Context context) {
         super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
-
     }
 
     @Override
@@ -54,10 +54,8 @@ public class DBCode extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_USUARIOS);
         onCreate(sqLiteDatabase);
-
     }
 
     // AÑADIR USUARIO
@@ -74,7 +72,6 @@ public class DBCode extends SQLiteOpenHelper {
     }
 
     public int ExisteUsuario(String email) {
-
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 TABLE_USUARIOS, // Nombre de la tabla
@@ -135,6 +132,8 @@ public class DBCode extends SQLiteOpenHelper {
         cursor.close();
         return count > 0;
     }
+
+
     /*
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
