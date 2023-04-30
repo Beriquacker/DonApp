@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 import com.example.donapp.R;
 
 import androidx.annotation.NonNull;
@@ -41,9 +43,19 @@ public class Tienda extends AppCompatActivity {
         // Configurar el adaptador y asignarlo al RecyclerView
         articleAdapter = new ArticleAdapter(articles);
         recyclerView.setAdapter(articleAdapter);
+
+        Button searchButton = findViewById(R.id.search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent searchIntent = new Intent(Tienda.this, SearchActivity.class);
+                startActivity(searchIntent);
+            }
+        });
+
     }
 
-    private List<Articulo> getArticlesFromDatabase() {
+    public List<Articulo> getArticlesFromDatabase() {
         List<Articulo> articles = new ArrayList<>();
 
         // Abrir la base de datos
@@ -78,8 +90,8 @@ public class Tienda extends AppCompatActivity {
         return articles;
     }
 
-    private class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
-        private List<Articulo> articles;
+    public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
+        public List<Articulo> articles;
 
         public ArticleAdapter(List<Articulo> articles) {
             this.articles = articles;
@@ -120,5 +132,8 @@ public class Tienda extends AppCompatActivity {
                 descriptionTextView = itemView.findViewById(R.id.description);
             }
         }
+
+
+
     }
 }
