@@ -42,7 +42,18 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-
+        <activity
+            android:name=".ActividadMenu"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".Tienda"
+            android:exported="false">
+        </activity>
 
     </application>
 
