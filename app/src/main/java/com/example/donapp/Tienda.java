@@ -33,7 +33,6 @@ public class Tienda extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArticleAdapter articleAdapter;
     private List<Articulo> articles;
-
     private String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
