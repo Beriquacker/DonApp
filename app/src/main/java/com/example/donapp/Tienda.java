@@ -54,15 +54,13 @@ public class Tienda extends AppCompatActivity {
         // configurar el menu
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar5);
         setSupportActionBar(toolbar);
-
-        // Establecer un OnMenuItemClickListener en el Toolbar
         toolbar.setOnMenuItemClickListener(item -> onOptionsItemSelected(item));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Crear un nuevo objeto MenuInflater usando el contexto de la aplicación
-        MenuInflater inflater = new MenuInflater(getApplicationContext());
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
         return true;
