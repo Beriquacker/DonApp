@@ -135,6 +135,18 @@ public class DBCode extends SQLiteOpenHelper {
         cursor.close();
         return count > 0;
     }
+
+    public void addArticle(String articulo, String descripcion, String estado, String usuario) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("articulo", articulo);
+        values.put("descripcion", descripcion);
+        values.put("estado", estado);
+        values.put("usuario", usuario);
+
+        db.insert(TABLE_TIENDA, null, values);
+        db.close();
+    }
     /*
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
