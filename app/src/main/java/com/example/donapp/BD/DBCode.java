@@ -17,7 +17,7 @@ public class DBCode extends SQLiteOpenHelper {
     public static final String  TABLE_DONACION = "t_donacion";
     public static final String  TABLE_ONG = "t_ong";
 
-    public DBCode(@Nullable Context context) {
+    public DBCode(Context context) {
         super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
 
     }
