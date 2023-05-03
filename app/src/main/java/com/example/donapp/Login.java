@@ -76,10 +76,10 @@ public class Login extends AppCompatActivity {
     }
 
     private void openHome() {
-        Intent intent = new Intent(this, Home.class);
+        Intent intent = new Intent(this, Tienda.class);
         Bundle b = new Bundle();
         b.putString("email", editTextCorreo.getText().toString());
-        intent.putExtras(b); //Put your id to your next Intent
+        intent.putExtras(b);
         startActivity(intent);
     }
 

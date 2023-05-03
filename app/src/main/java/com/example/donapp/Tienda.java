@@ -5,16 +5,22 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.example.donapp.R;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,10 +34,14 @@ public class Tienda extends AppCompatActivity {
     private ArticleAdapter articleAdapter;
     private List<Articulo> articles;
 
+    private String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
+
+        Bundle b = getIntent().getExtras();
+        email=b.getString("email");
 
         // Configurar RecyclerView
         recyclerView = findViewById(R.id.recyclerview);
@@ -44,7 +54,66 @@ public class Tienda extends AppCompatActivity {
         articleAdapter = new ArticleAdapter(articles);
         recyclerView.setAdapter(articleAdapter);
 
+        // configurar el menu
+        Toolbar toolbar = findViewById(R.id.toolbar5);
+        setSupportActionBar(toolbar);
+        startActivity(new Intent(this, Tienda.class));
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.idhome:
+                OpenHome();
+                Toast.makeText(this, "Home seleccionado", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.idperfil:
+                OpenPerfil();
+                Toast.makeText(this, "Perfil seleccionado", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.idajustes:
+                OpenAjustes();
+                Toast.makeText(this, "Ajustes seleccionado", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.idcerrarSesion:
+                openLogin();
+                Toast.makeText(this, "Se ha cerrado la sesión", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    private void openLogin() {
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
+    private void OpenHome()
+    {
+        Intent intent = new Intent(this, Tienda.class);
+        startActivity(intent);
+    }
+    private void OpenPerfil()
+    {
+        Intent intent = new Intent(this, Perfil.class);
+        Bundle b = new Bundle();
+        b.putString("email", email);
+        intent.putExtras(b); //Put your id to your next Intent
+        startActivity(intent);
+    }
+
+    private void OpenAjustes()
+    {
+        Intent intent = new Intent(this, Ajustes.class);
+        startActivity(intent);
     }
 
     public List<Articulo> getArticlesFromDatabase() {
