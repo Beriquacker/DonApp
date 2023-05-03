@@ -28,11 +28,6 @@
             android:exported="false">
         </activity>
         <activity
-            android:name=".Home"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-        <activity
             android:name=".Perfil"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

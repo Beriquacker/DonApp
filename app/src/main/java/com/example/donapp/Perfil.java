@@ -111,7 +111,7 @@ public class Perfil extends AppCompatActivity {
     }
     private void OpenHome()
     {
-        Intent intent = new Intent(this, Home.class);
+        Intent intent = new Intent(this, Tienda.class);
         startActivity(intent);
     }
     private void OpenPerfil()
