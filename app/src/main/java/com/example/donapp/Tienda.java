@@ -38,7 +38,7 @@ public class Tienda extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Obtener los datos de la base de datos
-        articles = getArticlesFromDatabase(this);
+        articles = getArticlesFromDatabase();
 
         // Configurar el adaptador y asignarlo al RecyclerView
         articleAdapter = new ArticleAdapter(articles);
@@ -55,17 +55,19 @@ public class Tienda extends AppCompatActivity {
 
     }
 
-    public List<Articulo> getArticlesFromDatabase(Context context) {
+    public List<Articulo> getArticlesFromDatabase() {
         List<Articulo> articles = new ArrayList<>();
 
         // Abrir la base de datos
-        DBCode dbHelper = new DBCode(context);
+        DBCode dbHelper = new DBCode(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         // Ejecutar la consulta para obtener los artículos
         Cursor cursor = db.rawQuery("SELECT * FROM " + DBCode.TABLE_TIENDA, null);
 
         // Recorrer el cursor y agregar cada artículo a la lista
+        // Recorrer el cursor y agregar cada artículo a la lista
+
         while (cursor.moveToNext()) {
             int nameIndex = cursor.getColumnIndex("articulo");
             int descriptionIndex = cursor.getColumnIndex("descripcion");
@@ -80,13 +82,13 @@ public class Tienda extends AppCompatActivity {
             }
         }
 
+
         // Cerrar el cursor y la base de datos
         cursor.close();
         db.close();
 
         return articles;
     }
-
 
     public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
         public List<Articulo> articles;
