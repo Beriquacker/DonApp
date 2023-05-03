@@ -2,9 +2,9 @@ package com.example.donapp;
 
 public class Articulo {
     private int image;
-    private String name;
-    private String state;
-    private String description;
+    private final String name;
+    private final String state;
+    private final String description;
 
     public Articulo(String name, String description, String state) {
         // Asigna las variables de instancia usando los argumentos proporcionados

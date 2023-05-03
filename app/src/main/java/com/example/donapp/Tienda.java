@@ -44,14 +44,6 @@ public class Tienda extends AppCompatActivity {
         articleAdapter = new ArticleAdapter(articles);
         recyclerView.setAdapter(articleAdapter);
 
-        Button searchButton = findViewById(R.id.search_button);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent searchIntent = new Intent(Tienda.this, SearchActivity.class);
-                startActivity(searchIntent);
-            }
-        });
 
     }
 

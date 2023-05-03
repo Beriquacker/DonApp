@@ -47,10 +47,6 @@
             android:exported="false">
         </activity>
         <activity
-            android:name=".SearchActivity"
-            android:exported="false">
-        </activity>
-        <activity
             android:name=".Tienda"
             android:exported="false">
         </activity>

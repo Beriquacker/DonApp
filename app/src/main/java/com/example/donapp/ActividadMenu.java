@@ -19,19 +19,6 @@ public class ActividadMenu extends AppCompatActivity implements SearchView.OnQue
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu); // Reemplaza 'R.menu.tu_menu' con el nombre de tu archivo de menú XML
-
-        MenuItem searchItem = menu.findItem(R.id.idbuscar);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-
-        searchView.setOnQueryTextListener(this);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.idhome:
