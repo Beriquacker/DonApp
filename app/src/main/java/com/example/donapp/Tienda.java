@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.donapp.BD.DBCode;
 
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,11 +34,11 @@ public class Tienda extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArticleAdapter articleAdapter;
     private List<Articulo> articles;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
-
 
         // Configurar RecyclerView
         recyclerView = findViewById(R.id.recyclerview);
@@ -54,13 +55,16 @@ public class Tienda extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar5);
         setSupportActionBar(toolbar);
 
+        // Establecer un OnMenuItemClickListener en el Toolbar
+        toolbar.setOnMenuItemClickListener(item -> onOptionsItemSelected(item));
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
+        // Crear un nuevo objeto MenuInflater usando el contexto de la aplicación
+        MenuInflater inflater = new MenuInflater(getApplicationContext());
         inflater.inflate(R.menu.menu, menu);
+
         return true;
     }
 
@@ -87,23 +91,23 @@ public class Tienda extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     private void openLogin() {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
-    private void OpenHome()
-    {
+
+    private void OpenHome() {
         Intent intent = new Intent(this, Tienda.class);
         startActivity(intent);
     }
-    private void OpenPerfil()
-    {
+
+    private void OpenPerfil() {
         Intent intent = new Intent(this, Perfil.class);
         startActivity(intent);
     }
 
-    private void OpenAjustes()
-    {
+    private void OpenAjustes() {
         Intent intent = new Intent(this, Ajustes.class);
         startActivity(intent);
     }
