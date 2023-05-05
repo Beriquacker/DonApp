@@ -6,6 +6,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Intent;
@@ -26,6 +28,8 @@ import com.example.donapp.Clases.Usuario;
 public class Perfil extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageButton imageButton;
+    private Button actualizarButton;
+    private String email;
 
     DBCode dbCode = new DBCode(this);
     @Override
@@ -34,7 +38,7 @@ public class Perfil extends AppCompatActivity {
         setContentView(R.layout.perfil);
 
         Bundle b = getIntent().getExtras();
-        String email=b.getString("email");
+        email=b.getString("email");
 
         Usuario usuario = dbCode.LeerUsuario(email);
 
@@ -53,6 +57,21 @@ public class Perfil extends AppCompatActivity {
 
         imageButton = findViewById(R.id.imageButton);
         imageButton.setOnClickListener(view -> openImageChooser());
+
+        actualizarButton = findViewById(R.id.actualizar);
+
+        actualizarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view)
+                {
+                    String newNombre = ((EditText)findViewById(R.id.name)).getText().toString();
+                    String newEmail = ((EditText)findViewById(R.id.email)).getText().toString();
+                    String newCodPostal = ((EditText)findViewById(R.id.codpostal)).getText().toString();
+                    dbCode.updateUser(email, newNombre, newEmail, newCodPostal);
+                    email = newEmail;
+                    OpenHome();
+                }
+            });
     }
     // FOTO PERFIL
     private void openImageChooser() {
@@ -112,6 +131,9 @@ public class Perfil extends AppCompatActivity {
     private void OpenHome()
     {
         Intent intent = new Intent(this, Tienda.class);
+        Bundle b = new Bundle();
+        b.putString("email", email);
+        intent.putExtras(b);
         startActivity(intent);
     }
     private void OpenPerfil()

@@ -1,4 +1,5 @@
 package com.example.donapp.BD;
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -73,6 +74,17 @@ public class DBCode extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void updateUser(String previousEmail, String name, String email, String CodPostal) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("CodPostal", CodPostal);
+        values.put("email", email);
+        String[] args = new String []{ previousEmail};
+        db.update(TABLE_USUARIOS, values, "email=?", args);
+        db.close();
+    }
+
     public int ExisteUsuario(String email) {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -91,6 +103,7 @@ public class DBCode extends SQLiteOpenHelper {
         return count;
     }
 
+    @SuppressLint("Range")
     public Usuario LeerUsuario(String email) {
 
         SQLiteDatabase db = this.getReadableDatabase();

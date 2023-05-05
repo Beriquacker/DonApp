@@ -34,11 +34,15 @@ public class Tienda extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArticleAdapter articleAdapter;
     private List<Articulo> articles;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
+
+        Bundle b = getIntent().getExtras();
+        email=b.getString("email");
 
         // Configurar RecyclerView
         recyclerView = findViewById(R.id.recyclerview);
@@ -102,6 +106,9 @@ public class Tienda extends AppCompatActivity {
 
     private void OpenPerfil() {
         Intent intent = new Intent(this, Perfil.class);
+        Bundle b = new Bundle();
+        b.putString("email", email);
+        intent.putExtras(b);
         startActivity(intent);
     }
 
