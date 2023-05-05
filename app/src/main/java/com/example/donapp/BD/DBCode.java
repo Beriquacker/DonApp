@@ -1,10 +1,11 @@
 package com.example.donapp.BD;
-import android.annotation.SuppressLint;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.Cursor;
+
 import androidx.annotation.Nullable;
 
 import com.example.donapp.Clases.Usuario;
@@ -12,11 +13,11 @@ import com.example.donapp.Clases.Usuario;
 public class DBCode extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String  DATABASE_NOMBRE = "DonAPP.db";
-    public static final String  TABLE_USUARIOS = "t_usuarios";
-    public static final String  TABLE_TIENDA = "t_tienda";
-    public static final String  TABLE_DONACION = "t_donacion";
-    public static final String  TABLE_ONG = "t_ong";
+    private static final String DATABASE_NOMBRE = "DonAPP.db";
+    public static final String TABLE_USUARIOS = "t_usuarios";
+    public static final String TABLE_TIENDA = "t_tienda";
+    public static final String TABLE_DONACION = "t_donacion";
+    public static final String TABLE_ONG = "t_ong";
 
     public DBCode(@Nullable Context context) {
         super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
@@ -103,13 +104,12 @@ public class DBCode extends SQLiteOpenHelper {
         return count;
     }
 
-    @SuppressLint("Range")
     public Usuario LeerUsuario(String email) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 TABLE_USUARIOS, // Nombre de la tabla
-                new String[]{"id","name","CodPostal","email"}, // Columnas que queremos obtener
+                new String[]{"id", "name", "CodPostal", "email"}, // Columnas que queremos obtener
                 "email = ?", // Condición (WHERE)
                 new String[]{email}, // Valores para reemplazar '?' en la condición
                 null, // GROUP BY
@@ -118,8 +118,7 @@ public class DBCode extends SQLiteOpenHelper {
         );
 
         Usuario usuario = new Usuario();
-        if (cursor != null)
-        {
+        if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToNext();
             usuario = new Usuario();
             usuario.setId(cursor.getInt(cursor.getColumnIndex("id")));
@@ -160,6 +159,14 @@ public class DBCode extends SQLiteOpenHelper {
         db.insert(TABLE_TIENDA, null, values);
         db.close();
     }
+
+    public void deleteAccount(String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_USUARIOS, "email = ?", new String[]{email});
+        db.close();
+    }
+
+
     /*
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

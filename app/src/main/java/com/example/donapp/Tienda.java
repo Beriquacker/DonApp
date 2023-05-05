@@ -66,7 +66,6 @@ public class Tienda extends AppCompatActivity {
         // Crear un nuevo objeto MenuInflater usando el contexto de la aplicación
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-
         return true;
     }
 
@@ -89,9 +88,17 @@ public class Tienda extends AppCompatActivity {
                 openLogin();
                 Toast.makeText(this, "Se ha cerrado la sesión", Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.idbuscar:
+                openSubirProducto();
+                Toast.makeText(this, "Se ha cerrado la sesión", Toast.LENGTH_SHORT).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    private void openSubirProducto() {
+        Intent intent = new Intent(this, SubirArticuloActivity.class);
+        startActivity(intent);
     }
 
     private void openLogin() {

@@ -1,44 +1,48 @@
 package com.example.donapp;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.view.View;
+import android.widget.Button;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
 import android.widget.ImageButton;
-import java.io.IOException;
-
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.donapp.BD.DBCode;
 import com.example.donapp.Clases.Usuario;
+
+import java.io.IOException;
 
 public class Perfil extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageButton imageButton;
     private Button actualizarButton;
     private String email;
-
     DBCode dbCode = new DBCode(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil);
 
+
+        SharedPreferences sh = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+
         Bundle b = getIntent().getExtras();
-        email=b.getString("email");
+        email = b.getString("email", "");
+
 
         Usuario usuario = dbCode.LeerUsuario(email);
 
@@ -61,18 +65,19 @@ public class Perfil extends AppCompatActivity {
         actualizarButton = findViewById(R.id.actualizar);
 
         actualizarButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view)
-                {
-                    String newNombre = ((EditText)findViewById(R.id.name)).getText().toString();
-                    String newEmail = ((EditText)findViewById(R.id.email)).getText().toString();
-                    String newCodPostal = ((EditText)findViewById(R.id.codpostal)).getText().toString();
-                    dbCode.updateUser(email, newNombre, newEmail, newCodPostal);
-                    email = newEmail;
-                    OpenHome();
-                }
-            });
+            @Override
+            public void onClick(View view)
+            {
+                String newNombre = ((EditText)findViewById(R.id.name)).getText().toString();
+                String newEmail = ((EditText)findViewById(R.id.email)).getText().toString();
+                String newCodPostal = ((EditText)findViewById(R.id.codpostal)).getText().toString();
+                dbCode.updateUser(email, newNombre, newEmail, newCodPostal);
+                email = newEmail;
+                OpenHome();
+            }
+        });
     }
+
     // FOTO PERFIL
     private void openImageChooser() {
         Intent intent = new Intent();
@@ -80,6 +85,7 @@ public class Perfil extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Selecciona una imagen"), PICK_IMAGE_REQUEST);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -94,6 +100,7 @@ public class Perfil extends AppCompatActivity {
             }
         }
     }
+
     // MENU
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -101,6 +108,7 @@ public class Perfil extends AppCompatActivity {
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -120,32 +128,40 @@ public class Perfil extends AppCompatActivity {
                 openLogin();
                 Toast.makeText(this, "Se ha cerrado la sesión", Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.idbuscar:
+                openSubirProducto();
+                Toast.makeText(this, "Se ha cerrado la sesión", Toast.LENGTH_SHORT).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+    private void openSubirProducto() {
+        Intent intent = new Intent(this, SubirArticuloActivity.class);
+        startActivity(intent);
+    }
+
     private void openLogin() {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
-    private void OpenHome()
-    {
+
+    private void OpenHome() {
         Intent intent = new Intent(this, Tienda.class);
         Bundle b = new Bundle();
         b.putString("email", email);
         intent.putExtras(b);
         startActivity(intent);
     }
-    private void OpenPerfil()
-    {
+
+    private void OpenPerfil() {
         Intent intent = new Intent(this, Perfil.class);
         startActivity(intent);
     }
-    private void OpenAjustes()
-    {
+
+    private void OpenAjustes() {
         Intent intent = new Intent(this, Ajustes.class);
         startActivity(intent);
     }
-    // MANEJAR DATOS DEL USUARIO
 
 }

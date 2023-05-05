@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.DonApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
@@ -14,5 +14,20 @@
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+        <item name="android:actionOverflowButtonStyle">@style/Theme.DonApp.OverFlow</item>
+    </style>
+
+    <style name="Theme.DonApp.OverFlow">
+        <item name="android:src">@drawable/baseline_more_vert_24</item>
+
+    </style>
+
+    <style name="Theme.DonApp.Toolbar">
+        <item name="android:background">@color/purple_500</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
     </style>
 </resources>

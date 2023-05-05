@@ -19,6 +19,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
         android:ems="10"
+        android:text="anasshamsi97@gmail.com"
         android:hint="Correo"
         android:inputType="textEmailAddress" />
 
@@ -26,6 +27,7 @@
         android:id="@+id/editTextTextPassword"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:text="anas123"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="50dp"

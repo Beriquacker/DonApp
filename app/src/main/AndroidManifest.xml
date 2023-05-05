@@ -45,6 +45,10 @@
             android:name=".Tienda"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".SubirArticuloActivity"
+            android:exported="false">
+        </activity>
 
     </application>
 

@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/idbuscar"
-        android:title="Buscar Producto"
+        android:title="Subir Producto"
         app:actionViewClass="android.widget.SearchView" />
     <item
         android:id="@+id/idhome"
-        android:title="Home" />
+        android:title="Tienda" />
     <item
         android:id="@+id/idperfil"
         android:title="Perfil" />

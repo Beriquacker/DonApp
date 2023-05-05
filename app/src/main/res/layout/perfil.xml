@@ -8,10 +8,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple_500"
-        android:minHeight="?attr/actionBarSize"
+        style="@style/Theme.DonApp.Toolbar"
         android:theme="?attr/actionBarTheme" />
 
     <ImageButton
@@ -31,7 +28,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
-        android:hint="Nombre"
+        android:hint="Nomnbre"
         android:inputType="text"/>
 
     <EditText

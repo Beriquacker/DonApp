@@ -37,9 +37,17 @@ public class ActividadMenu extends AppCompatActivity implements SearchView.OnQue
                 openLogin();
                 Toast.makeText(this, "Se ha cerrado la sesión", Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.idbuscar:
+                openSubirProducto();
+                Toast.makeText(this, "Se ha cerrado la sesión", Toast.LENGTH_SHORT).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    private void openSubirProducto() {
+        Intent intent = new Intent(this, SubirArticuloActivity.class);
+        startActivity(intent);
     }
     private void openLogin() {
         Intent intent = new Intent(this, Login.class);
