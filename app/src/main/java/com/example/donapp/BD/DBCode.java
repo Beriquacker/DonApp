@@ -21,7 +21,6 @@ public class DBCode extends SQLiteOpenHelper {
 
     public DBCode(@Nullable Context context) {
         super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
-
     }
 
     @Override
@@ -38,7 +37,9 @@ public class DBCode extends SQLiteOpenHelper {
                 "articulo TEXT NOT NULL," +
                 "descripcion TEXT NOT NULL," +
                 "estado TEXT NOT NULL," +
-                "usuario TEXT NOT NULL)");
+                "usuario TEXT NOT NULL," +
+                "image TEXT)");
+
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_DONACION + "("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -61,6 +62,24 @@ public class DBCode extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
 
     }
+
+    public void addArticle(String articulo, String descripcion, String estado, String usuario, String image) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("articulo", articulo);
+        values.put("descripcion", descripcion);
+        values.put("estado", estado);
+        values.put("usuario", usuario);
+        values.put("image", image);
+
+        db.insert(TABLE_TIENDA, null, values);
+        db.close();
+    }
+
+    // El resto del código se mantiene igual
+
+
+
 
     // AÑADIR USUARIO
     public void addUser(String name, String email, String password, String CodPostal) {
